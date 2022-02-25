@@ -4,12 +4,13 @@
 
 ---
 
-# Why
+# What's the point?
 
+* Enables supervisory-level management features
+  * Dilenates “company” versus “byod” devices
 * “Out of box” deployment of a device, even remotely
-* Enables management capabilities
-* Helps in recovering a lost device[^1]
 * Doesn't require making hardware-specific boot images
+* Helps in recovering a lost device[^1]
 
 [^1]: Not really
 
@@ -37,6 +38,7 @@
 * Done by the Mac team
 * Tells Apple which server to send the device to at setup
 * Sorta-kinda like pre-setting a task sequence
+* MDM server is given new device serial number; match-making is configured
 
 ---
 ![fit](assigning-a-device-1.png)
@@ -72,17 +74,45 @@ profiles show -type enrollment
 ```
 ---
 
-# Bootstrapping MSC
+# Remote Management
 
 * Setup is configured to create the UM-Support account
 * MDM installs its own tools (`jamf` and Service Provider Support) and a utility called `installapplications`
-* installapps pulls down a JSON recipe of initial packages
+
+---
+![fit](prestage.png)
+
+---
+![fit](installapps.png)
 
 ---
 
+
 # Bootstrapping MSC
 
+* installapps pulls down a list of initial packages and scripts
 * installapps installs and launches DEPNotify, which creates the progress screen you see
-* installapps also installs Managed Software Center and the Izzy client
-* Izzy does its initial registration steps using the logic board's UDID
+* installapps installs Managed Software Center and Izzy client
+* Izzy does its initial registration steps
 * MSC is started and installs everything else
+* profit!
+
+---
+![fit](installapps-json.png)
+
+---
+
+
+# Issues
+
+* Match-making misses are stored
+* What about Apple Store / BestBuy purchases?
+
+---
+
+# Questions?
+
+---
+
+# Thanks!
+
